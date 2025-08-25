@@ -1,0 +1,89 @@
+{
+  "sites": [
+    {
+      "name": "Google",
+      "url": "https://accounts.google.com/signin/v2/lookup",
+      "method": "POST",
+      "data": "f.req=%5B%5B%5B%22iDn33e%22%2C%22%5Bnull%2C%5B%5C%22{email}%5C%22%2Cnull%2Ctrue%5D%2Cnull%2Cnull%2C0%5D%22%2Cnull%2C%221%22%5D%5D%5D",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8"
+      },
+      "success_regex": "\"gf.sis\"",
+      "fail_regex": "\"gf.error\""
+    },
+    {
+      "name": "Microsoft",
+      "url": "https://login.live.com/GetCredentialType.srf",
+      "method": "POST",
+      "data": "username={email}",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "success_regex": "\"IfExistsResult\":0",
+      "fail_regex": "\"IfExistsResult\":1"
+    },
+    {
+      "name": "Facebook",
+      "url": "https://www.facebook.com/login/identify/",
+      "method": "GET",
+      "params": {"email": "{email}"},
+      "success_regex": "\"_js_datr\"",
+      "fail_regex": "\"_js_datr\""
+    },
+    {
+      "name": "Twitter",
+      "url": "https://api.twitter.com/i/users/email_available.json",
+      "method": "GET",
+      "params": {"email": "{email}"},
+      "success_regex": "\"valid\":true",
+      "fail_regex": "\"valid\":false"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/accounts/account_recovery_send_email/",
+      "method": "POST",
+      "data": "email_or_username={email}&recaptcha_challenge_field=",
+      "headers": {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36)",
+        "X-CSRFToken": "",
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "success_regex": "\"status\": \"ok\"",
+      "fail_regex": "\"message\": \"User not found\""
+    },
+    {
+      "name": "Netflix",
+      "url": "https://www.netflix.com/api/v2/email/check",
+      "method": "POST",
+      "data": "{\"email\":\"{email}\"}",
+      "headers": {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      "success_regex": "\"isEmailExist\":true",
+      "fail_regex": "\"isEmailExist\":false"
+    },
+    {
+      "name": "Adobe",
+      "url": "https://auth.services.adobe.com/api/v1/users/accounts",
+      "method": "POST",
+      "data": "{\"email\":\"{email}\"}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "success_regex": "\"status\":\"success\"",
+      "fail_regex": "\"code\":\"USER_NOT_FOUND\""
+    },
+    {
+      "name": "Spotify",
+      "url": "https://www.spotify.com/api/email-check",
+      "method": "POST",
+      "data": "email={email}",
+      "headers": {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      "success_regex": "\"status\":\"ok\"",
+      "fail_regex": "\"message\":\"Email not found\""
+    }
+  ]
+}

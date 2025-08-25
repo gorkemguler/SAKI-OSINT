@@ -1,0 +1,8 @@
+colorama
+selenium
+webdriver-manager
+aiohttp
+phonenumbers
+google
+python-whois
+dnspython
